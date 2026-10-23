@@ -1,0 +1,31 @@
+{
+  "keyMetrics": [
+    {
+      "value": "24/7/365",
+      "label": "Ready to Respond",
+      "detail": "On call day and night across New Brunswick"
+    },
+    {
+      "value": "100%",
+      "label": "Volunteer Powered",
+      "detail": "Dedicated community members saving lives"
+    },
+    {
+      "value": "1 of 9",
+      "label": "NB GSAR Teams",
+      "detail": "Coordinating with provincial & police services"
+    },
+    {
+      "value": "< 30 min",
+      "label": "Project Lifesaver Avg",
+      "detail": "Rapid recovery time for vulnerable wanderers"
+    }
+  ],
+  "annualHighlights": {
+    "year": "2025-2026",
+    "incidents": "25+",
+    "exercises": "48+",
+    "volunteerHours": "14,500+",
+    "activeMembers": "65+"
+  }
+}

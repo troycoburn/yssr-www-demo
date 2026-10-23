@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Content Manager | York Sunbury Search and Rescue</title>
+  <meta name="description" content="Visual Content Manager for YSSR volunteers and committee chairs to update news, team lists, and FAQs without touching code.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .code-box {
+      background: #0f172a;
+      color: #38bdf8;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      font-family: monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      max-height: 250px;
+    }
+  </style>
+</head>
+<body style="background-color: var(--color-bg-alt);">
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-identity">
+        <img src="assets/images/logo.png" alt="York Sunbury Search and Rescue Crest" class="brand-logo-img">
+        <div class="brand-titles">
+          <span class="brand-name">YSSR Content Manager</span>
+          <span class="brand-sub">Website Editor</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-secondary btn-sm">&larr; Return to Live Site</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" style="padding: 2rem 0 4rem 0;">
+    <div class="container">
+      <!-- Status message toast -->
+      <div id="adminStatusMessage" style="display:none; background-color: var(--color-forest-light); color: var(--color-forest); padding: 1rem 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; font-weight: 700; border-left: 4px solid var(--color-forest);"></div>
+
+      <!-- Overview Banner -->
+      <div class="admin-card" style="border-left: 5px solid var(--color-sar-orange);">
+        <div class="admin-header-actions">
+          <div>
+            <h2 style="margin-bottom: 0.25rem;">Visual Website Content Editor</h2>
+            <p style="color: var(--color-text-muted); margin-bottom: 0;">
+              Easily add news dispatches, modify team leadership, or update FAQs. When you're done, copy or download the file and commit it to GitHub.
+            </p>
+          </div>
+          <div>
+            <a href="#how-to-publish" class="btn btn-outline-navy btn-sm">How to Publish Changes &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+          <button type="button" class="active" data-tab="news">News &amp; Articles</button>
+          <button type="button" data-tab="team">Team Leadership</button>
+          <button type="button" data-tab="faq">FAQs</button>
+          <button type="button" data-tab="guide">Publishing Instructions</button>
+        </div>
+
+        <!-- TAB 1: NEWS -->
+        <div id="tab-news" class="admin-tab-pane">
+          <div class="admin-header-actions">
+            <div>
+              <h3 style="margin-bottom: 0;">News Articles &amp; Announcements</h3>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 0;">Articles appear immediately on the Home and News pages.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button type="button" class="btn btn-primary btn-sm" onclick="YSSRAdmin.exportData('news')">Download news.json</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="YSSRAdmin.copyToClipboard('news')">Copy to Clipboard</button>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+            <!-- Form -->
+            <div style="background: var(--color-bg-light); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.5rem;">
+              <h4 id="newsFormHeading" style="margin-bottom: 1rem;">Add New Article</h4>
+              <form id="newsEditForm">
+                <div class="form-group">
+                  <label for="newsTitle" class="form-label">Article Title</label>
+                  <input type="text" id="newsTitle" class="form-control" required placeholder="e.g. Annual Pancake Breakfast Announced">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                  <div class="form-group">
+                    <label for="newsDate" class="form-label">Publication Date</label>
+                    <input type="date" id="newsDate" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="newsCategory" class="form-label">Category</label>
+                    <select id="newsCategory" class="form-control" required>
+                      <option value="Operations">Operations</option>
+                      <option value="Equipment">Equipment</option>
+                      <option value="Fundraising">Fundraising</option>
+                      <option value="Safety & Prevention">Safety &amp; Prevention</option>
+                      <option value="Community">Community</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="newsSummary" class="form-label">Brief Summary (shown on cards)</label>
+                  <textarea id="newsSummary" class="form-control" style="min-height: 80px;" required placeholder="1-2 sentences summarizing the announcement..."></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="newsContent" class="form-label">Full Article Story</label>
+                  <textarea id="newsContent" class="form-control" style="min-height: 140px;" required placeholder="Full details of the article..."></textarea>
+                </div>
+
+                <div style="display:flex; gap:0.5rem;">
+                  <button type="submit" class="btn btn-primary" style="flex-grow:1;">Save to List</button>
+                  <button type="button" class="btn btn-secondary" onclick="YSSRAdmin.resetNewsForm()">Reset</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- List -->
+            <div>
+              <h4 style="margin-bottom: 1rem;">Current Articles</h4>
+              <div id="adminNewsList" style="border: 1px solid var(--color-border); border-radius: var(--radius-md); max-height: 520px; overflow-y: auto;">
+                <!-- Filled dynamically by admin.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: TEAM -->
+        <div id="tab-team" class="admin-tab-pane" style="display:none;">
+          <div class="admin-header-actions">
+            <div>
+              <h3 style="margin-bottom: 0;">Board &amp; Committee Roster</h3>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 0;">Updates the leadership section on the Who We Are page.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button type="button" class="btn btn-primary btn-sm" onclick="YSSRAdmin.exportData('team')">Download team.json</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="YSSRAdmin.copyToClipboard('team')">Copy to Clipboard</button>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+            <!-- Form -->
+            <div style="background: var(--color-bg-light); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.5rem;">
+              <h4 style="margin-bottom: 1rem;">Add Team Member</h4>
+              <form id="teamEditForm">
+                <div class="form-group">
+                  <label for="teamName" class="form-label">Full Name</label>
+                  <input type="text" id="teamName" class="form-control" required placeholder="e.g. Jane Smith">
+                </div>
+
+                <div class="form-group">
+                  <label for="teamRole" class="form-label">Role / Title</label>
+                  <input type="text" id="teamRole" class="form-control" required placeholder="e.g. Training Committee Chair">
+                </div>
+
+                <div class="form-group">
+                  <label for="teamGroup" class="form-label">Classification</label>
+                  <select id="teamGroup" class="form-control" required>
+                    <option value="executive">Executive Board (President, VP, Secretary, Treasurer)</option>
+                    <option value="committees">Operational &amp; Committee Leadership</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="teamBio" class="form-label">Brief Description of Responsibilities</label>
+                  <textarea id="teamBio" class="form-control" style="min-height: 80px;" placeholder="Oversees..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Add Member</button>
+              </form>
+            </div>
+
+            <!-- List -->
+            <div>
+              <h4 style="margin-bottom: 1rem;">Active Leadership</h4>
+              <div id="adminTeamList" style="border: 1px solid var(--color-border); border-radius: var(--radius-md); max-height: 520px; overflow-y: auto;">
+                <!-- Dynamic list -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: FAQ -->
+        <div id="tab-faq" class="admin-tab-pane" style="display:none;">
+          <div class="admin-header-actions">
+            <div>
+              <h3 style="margin-bottom: 0;">Frequently Asked Questions</h3>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 0;">Updates the FAQ accordions on the Join Our Team and Contact pages.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button type="button" class="btn btn-primary btn-sm" onclick="YSSRAdmin.exportData('faq')">Download faq.json</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="YSSRAdmin.copyToClipboard('faq')">Copy to Clipboard</button>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+            <!-- Form -->
+            <div style="background: var(--color-bg-light); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.5rem;">
+              <h4 style="margin-bottom: 1rem;">Add FAQ</h4>
+              <form id="faqEditForm">
+                <div class="form-group">
+                  <label for="faqQuestion" class="form-label">Question</label>
+                  <input type="text" id="faqQuestion" class="form-control" required placeholder="e.g. Do members receive mileage reimbursement?">
+                </div>
+
+                <div class="form-group">
+                  <label for="faqCategory" class="form-label">Category</label>
+                  <select id="faqCategory" class="form-control" required>
+                    <option value="recruitment">Recruitment</option>
+                    <option value="membership">Membership</option>
+                    <option value="operations">Operations</option>
+                    <option value="donations">Donations</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="faqAnswer" class="form-label">Detailed Answer</label>
+                  <textarea id="faqAnswer" class="form-control" style="min-height: 120px;" required placeholder="Write the answer here..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Add FAQ</button>
+              </form>
+            </div>
+
+            <!-- List -->
+            <div>
+              <h4 style="margin-bottom: 1rem;">Current FAQs</h4>
+              <div id="adminFaqList" style="border: 1px solid var(--color-border); border-radius: var(--radius-md); max-height: 520px; overflow-y: auto;">
+                <!-- Dynamic list -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: PUBLISHING GUIDE -->
+        <div id="tab-guide" class="admin-tab-pane" style="display:none;" id="how-to-publish">
+          <h3>How to Publish Changes (1-Minute Guide for Non-Technical Members)</h3>
+          <p class="lead">
+            Because this website is static and hosted on GitHub Pages, publishing an update is as easy as editing a text document on GitHub.com without installing any software!
+          </p>
+
+          <div class="spotlight-grid" style="margin-top: 1.5rem;">
+            <div>
+              <h4>Method A: Directly on GitHub.com (Recommended for Fast Edits)</h4>
+              <ol style="padding-left: 1.25rem; font-size: 0.95rem;">
+                <li style="margin-bottom: 0.75rem;">
+                  Use this tool to make your edits and click <strong>"Copy to Clipboard"</strong> above.
+                </li>
+                <li style="margin-bottom: 0.75rem;">
+                  Navigate to your GitHub repository in your web browser (e.g. <code>github.com/yorksunburysar/website</code>).
+                </li>
+                <li style="margin-bottom: 0.75rem;">
+                  Click on the <code>data/</code> folder, then select the file (<code>news.json</code>, <code>team.json</code>, or <code>faq.json</code>).
+                </li>
+                <li style="margin-bottom: 0.75rem;">
+                  Click the <strong>Pencil icon (Edit this file)</strong> in the top right.
+                </li>
+                <li style="margin-bottom: 0.75rem;">
+                  Select all and Paste your copied content.
+                </li>
+                <li>
+                  Click the green <strong>"Commit changes"</strong> button. Your website updates automatically in about 30 seconds!
+                </li>
+              </ol>
+            </div>
+
+            <div>
+              <h4>Method B: Drag &amp; Drop Downloaded File</h4>
+              <ol style="padding-left: 1.25rem; font-size: 0.95rem;">
+                <li style="margin-bottom: 0.75rem;">
+                  Click <strong>"Download [file].json"</strong> above to save the file to your Downloads folder.
+                </li>
+                <li style="margin-bottom: 0.75rem;">
+                  Open the repository on GitHub in the <code>data/</code> folder.
+                </li>
+                <li style="margin-bottom: 0.75rem;">
+                  Click <strong>Add file &rarr; Upload files</strong> and drag the downloaded file in.
+                </li>
+                <li>
+                  Click <strong>Commit changes</strong>.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container text-center" style="text-align: center;">
+      <p style="margin-bottom: 0.25rem;">York Sunbury Search and Rescue &bull; Internal Content Administration</p>
+      <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0;">Designed for non-technical volunteer committee chairs.</p>
+    </div>
+  </footer>
+
+  <script src="js/data-loader.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

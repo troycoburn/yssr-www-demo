@@ -1,0 +1,88 @@
+{
+  "executive": [
+    {
+      "name": "Matt Pasqualetto",
+      "role": "President",
+      "category": "executive",
+      "bio": "Leads organizational governance, strategic partnerships with provincial authorities, and oversees YSSR's community commitment.",
+      "email": "president@yssr.ca"
+    },
+    {
+      "name": "John Leslie",
+      "role": "Vice President",
+      "category": "executive",
+      "bio": "Assists the President, supports team operations, and helps coordinate inter-agency liaison across New Brunswick.",
+      "email": "vicepresident@yssr.ca"
+    },
+    {
+      "name": "Wayne MacKay",
+      "role": "Secretary",
+      "category": "executive",
+      "bio": "Manages records, official correspondence, documentation compliance, and general meeting proceedings.",
+      "email": "secretary@yssr.ca"
+    },
+    {
+      "name": "Jeff Justason",
+      "role": "Treasurer",
+      "category": "executive",
+      "bio": "Stewards charitable financial records, budgeting, donation tracking, and CRA charitable filings.",
+      "email": "treasurer@yssr.ca"
+    }
+  ],
+  "committees": [
+    {
+      "name": "Bradley Parker",
+      "role": "Search Commander",
+      "category": "operations",
+      "bio": "Oversees search incident management, search tactics, command post operations, and deployment readiness."
+    },
+    {
+      "name": "Shantelle Leslie",
+      "role": "Project Lifesaver Chair",
+      "category": "programs",
+      "bio": "Coordinates electronic search specialists, client enrollment, transmitter maintenance, and family outreach for cognitive wandering prevention."
+    },
+    {
+      "name": "David Northrup",
+      "role": "AdventureSmart Chair",
+      "category": "programs",
+      "bio": "Leads community education workshops including Hug-a-Tree and Survive, Survive Outside, and youth safety programs."
+    },
+    {
+      "name": "Troy Coburn",
+      "role": "IT Committee Chair",
+      "category": "support",
+      "bio": "Administers technology infrastructure, communications systems, data management, and digital services."
+    },
+    {
+      "name": "Jasmine Manz",
+      "role": "Membership Chair",
+      "category": "membership",
+      "bio": "Oversees new member intake, orientation nights, background checks, and active volunteer records."
+    },
+    {
+      "name": "Randy Firth",
+      "role": "Public Relations Chair",
+      "category": "support",
+      "bio": "Coordinates media relations, community engagement, newsletter publications, and social media channels."
+    },
+    {
+      "name": "Zandra Rubinger",
+      "role": "Equipment Committee Chair",
+      "category": "logistics",
+      "bio": "Manages specialized rescue gear, field supplies, tracking devices, radios, and emergency medical kits."
+    },
+    {
+      "name": "George Derrah",
+      "role": "Transportation Committee Chair",
+      "category": "logistics",
+      "bio": "Supervises team emergency response vehicles including Rescue 11, mobile command assets, and driver qualifications."
+    },
+    {
+      "name": "Jonathan Colbourne",
+      "role": "Training Committee Chair Alternate",
+      "category": "operations",
+      "bio": "Develops field exercises, navigation, tracking, survival skills, and first aid re-certifications."
+    }
+  ]
+}

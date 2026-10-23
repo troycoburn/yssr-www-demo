@@ -1,0 +1,57 @@
+[
+  {
+    "id": "sar-resolve-2025",
+    "title": "SAR Resolve 2025 Tests Multi-Agency Coordination as Rescue 11 Makes Full-Scale Debut",
+    "date": "2025-10-22",
+    "category": "Operations",
+    "author": "YSSR Operations & Media",
+    "featured": true,
+    "summary": "On October 18, York Sunbury Search and Rescue (YSSR) co-led SAR Resolve 2025, a large-scale multi-agency field exercise that simulated a complex multi-day lost person scenario.",
+    "content": "On October 18, York Sunbury Search and Rescue (YSSR) co-led SAR Resolve 2025, a large-scale field exercise testing coordination between municipal first responders, provincial emergency services, and neighboring ground search and rescue units. The exercise marked the full-scale operational debut of Rescue 11, YSSR's newest custom-outfitted command and response truck. Searchers deployed across rugged terrain using GPS tracking, drone reconnaissance, and tactical ground grids to successfully locate and evacuate test subjects.",
+    "tag": "Exercise"
+  },
+  {
+    "id": "new-rescue-truck-rescue-11",
+    "title": "New Rescue Truck for Fredericton-area Volunteer Search and Rescue Team",
+    "date": "2025-08-24",
+    "category": "Equipment",
+    "author": "YSSR Board",
+    "featured": true,
+    "summary": "York Sunbury Search and Rescue proudly unveiled its newest response vehicle, Rescue 11, significantly enhancing rapid response and field logistics capabilities.",
+    "content": "York Sunbury Search and Rescue (YSSR) proudly unveiled its newest response vehicle, Rescue 11. Built to tackle New Brunswick's demanding weather conditions and remote terrain, Rescue 11 carries advanced telecommunications gear, medical hypothermia evacuation equipment, specialized electronics, and serves as an on-scene tactical mobile command hub. This major milestone was made possible by the incredible generosity of community donors, sponsors, and regional partners.",
+    "tag": "Apparatus"
+  },
+  {
+    "id": "buy-50-50-tickets",
+    "title": "Support YSSR: New Brunswick GSAR Provincial 50/50 Draw",
+    "date": "2025-06-15",
+    "category": "Fundraising",
+    "author": "Fundraising Committee",
+    "featured": false,
+    "summary": "Support York Sunbury Search & Rescue while getting a chance to win the provincial jackpot through the NB Ground Search and Rescue 50/50 lottery.",
+    "content": "YSSR is proud to work alongside the 8 other volunteer GSAR teams across New Brunswick in our recurring provincial 50/50 raffle. Proceeds directly fund critical training, vehicle maintenance, radio communications, and safety gear for volunteer searchers. Pick your tickets today and designate York Sunbury Search and Rescue as your supported team!",
+    "tag": "Fundraising"
+  },
+  {
+    "id": "fall-hiking-safety-essentials",
+    "title": "Never Hit The Trail Without The 10 Essentials: Autumn & Winter Safety",
+    "date": "2025-10-10",
+    "category": "Safety & Prevention",
+    "author": "AdventureSmart Committee",
+    "featured": false,
+    "summary": "Days are shorter and temperatures drop rapidly in New Brunswick forests. Learn the vital AdventureSmart checklist before stepping into the woods.",
+    "content": "Before venturing into the New Brunswick wilderness, every hiker must prepare. Even a short 2-hour afternoon walk can turn into an overnight survival situation if an injury occurs or darkness falls. Remember the three Ts: Trip Planning (file a plan with a reliable contact), Training (know your route and limits), and Taking the Essentials (navigation, headlamp, extra layers, fire starter, first aid kit, emergency shelter, knife, water, food, and signaling whistle).",
+    "tag": "AdventureSmart"
+  },
+  {
+    "id": "project-lifesaver-growth",
+    "title": "Project Lifesaver: Protecting Loved Ones with Cognitive Conditions",
+    "date": "2025-04-12",
+    "category": "Community",
+    "author": "Shantelle Leslie",
+    "featured": false,
+    "summary": "Discover how YSSR's electronic search specialists use specialized radio-tracking bracelets to locate vulnerable wandering individuals in under 30 minutes.",
+    "content": "Project Lifesaver is an international program operated locally by YSSR in partnership with Fredericton and regional police. Enrolled clients wear a small waterproof radio frequency transmitter bracelet. If a participant wanders, specialized search receivers deployed by trained YSSR specialists cut search times from multiple days to an average of under 30 minutes, keeping families together and safe.",
+    "tag": "Lifesaver"
+  }
+]

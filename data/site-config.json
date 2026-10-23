@@ -1,0 +1,41 @@
+{
+  "orgName": "York Sunbury Search and Rescue",
+  "orgShortName": "YSSR",
+  "tagline": "Bring Them Home",
+  "motto": "Volunteers Dedicated to Saving Lives in New Brunswick",
+  "established": "1980s",
+  "coverageArea": "Fredericton, York and Sunbury Counties, and across New Brunswick",
+  "charityNumber": "Registered Non-Profit & Charity",
+  "phone": "(506) 461-5832",
+  "email": "info@yssr.ca",
+  "recruitmentEmail": "membership@yssr.ca",
+  "address": {
+    "street": "527 Dundonald St, Suite 247",
+    "city": "Fredericton",
+    "province": "NB",
+    "postalCode": "E3B 1X5",
+    "country": "Canada"
+  },
+  "emergencyNotice": {
+    "title": "EMERGENCY: DIAL 911",
+    "message": "If someone is missing or in distress, please dial 911 immediately. Police agencies activate volunteer Search & Rescue teams. There is no waiting period to report a missing person.",
+    "phone": "911"
+  },
+  "links": {
+    "canadaHelps": "https://www.canadahelps.org/en/dn/26658",
+    "lottery5050": "https://yssr.ca/50-50/",
+    "d4h": "https://yorksunbury.team-manager.ca.d4h.com/dashboard",
+    "office365": "https://outlook.office.com/",
+    "facebook": "https://www.facebook.com/YorkSunburysearchAndRescue/",
+    "twitter": "https://twitter.com/yorksunburysar?lang=en",
+    "instagram": "https://www.instagram.com/york_sunbury_sar/",
+    "youtube": "https://www.youtube.com/channel/UCqoTd3h4tJl8EqmH6bfV61A/"
+  },
+  "banner": {
+    "active": true,
+    "badge": "RECRUITMENT",
+    "text": "New Member recruitment is open! Join our team as an operational searcher or non-operational volunteer.",
+    "linkText": "Learn How to Apply",
+    "linkUrl": "join.html"
+  }
+}

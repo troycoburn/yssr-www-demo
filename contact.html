@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | York Sunbury Search and Rescue (YSSR)</title>
+  <meta name="description" content="Contact York Sunbury Search and Rescue for membership, community presentations, Project Lifesaver inquiries, or general non-emergency questions.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <!-- Emergency 911 Bar -->
+  <aside class="emergency-banner" aria-label="Emergency Notice" id="emergency-info">
+    <div class="container">
+      <div>
+        <span class="emergency-pill">&#9888; EMERGENCY: DIAL 911</span>
+        <span>If someone is lost or missing, please dial 911 immediately. Police services activate volunteer SAR teams.</span>
+      </div>
+      <div>
+        <strong>Do not wait 24 hours to report.</strong>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Header & Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-identity">
+        <img src="assets/images/logo.png" alt="York Sunbury Search and Rescue Crest" class="brand-logo-img">
+        <div class="brand-titles">
+          <span class="brand-name">York Sunbury</span>
+          <span class="brand-sub">Search &amp; Rescue • New Brunswick</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary Navigation">
+        <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-expanded="false" aria-label="Toggle navigation menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+
+        <ul class="nav-links" id="mainNavLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Who We Are</a></li>
+          <li><a href="services.html">What We Do</a></li>
+          <li><a href="project-lifesaver.html">Project Lifesaver</a></li>
+          <li><a href="join.html">Join Our Team</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="donate.html" class="btn btn-primary btn-sm">Donate Now</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a> &rsaquo; <span>Contact Us</span>
+        </nav>
+        <h1>Get In Touch With Us</h1>
+        <p class="lead">
+          While we're pretty good with smoke signals, sending us a message is much faster. We look forward to hearing from you!
+        </p>
+      </div>
+    </section>
+
+    <!-- Emergency Reminder Banner -->
+    <section style="background-color: var(--color-danger-bg); border-bottom: 2px solid #fca5a5; padding: 1.25rem 0;">
+      <div class="container" style="display:flex; align-items:center; gap: 1rem;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 32px; height: 32px; color: var(--color-danger-red); flex-shrink: 0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div>
+          <strong style="color: var(--color-danger-red); font-size: 1.05rem;">Is this an emergency or active lost person situation?</strong>
+          <p style="font-size: 0.92rem; color: #7f1d1d; margin-bottom: 0;">
+            Please <strong>DIAL 911</strong> or contact your municipal police force immediately. SAR teams can only be dispatched by official law enforcement agencies.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form & Info Grid -->
+    <section class="section">
+      <div class="container">
+        <div class="spotlight-grid">
+          <!-- Interactive Form -->
+          <div>
+            <div class="content-card" style="margin-bottom: 0;">
+              <h2>Send Us a Message</h2>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem;">
+                Fill out the form below and the appropriate committee volunteer will get back to you shortly.
+              </p>
+
+              <form id="contactForm" novalidate>
+                <div class="form-group">
+                  <label for="contactName" class="form-label">Your Name <span style="color: var(--color-danger-red);">*</span></label>
+                  <input type="text" id="contactName" class="form-control" required placeholder="Jane Doe">
+                </div>
+
+                <div class="form-group">
+                  <label for="contactEmail" class="form-label">Your Email Address <span style="color: var(--color-danger-red);">*</span></label>
+                  <input type="email" id="contactEmail" class="form-control" required placeholder="jane@example.com">
+                </div>
+
+                <div class="form-group">
+                  <label for="contactSubject" class="form-label">Subject / Topic <span style="color: var(--color-danger-red);">*</span></label>
+                  <select id="contactSubject" class="form-control" required>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Membership & Volunteering">Membership &amp; Volunteering</option>
+                    <option value="Project Lifesaver">Project Lifesaver</option>
+                    <option value="AdventureSmart / School Presentation">AdventureSmart / School Presentation</option>
+                    <option value="Donation / Sponsorship">Donation / Corporate Sponsorship</option>
+                    <option value="Media & Press">Media &amp; Press</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="contactMessage" class="form-label">Your Message <span style="color: var(--color-danger-red);">*</span></label>
+                  <textarea id="contactMessage" class="form-control" required placeholder="How can we help you?"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                  Send Message
+                </button>
+
+                <div id="formFeedback"></div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Contact Information & Coordinates -->
+          <div>
+            <div class="content-card" style="border-top: 5px solid var(--color-sar-orange); margin-bottom: 1.5rem;">
+              <h3>Direct Contact Information</h3>
+              
+              <div class="footer-contact-item" style="color: var(--color-text-main); margin-bottom: 1.25rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 22px; height: 22px; color: var(--color-sar-orange);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div>
+                  <strong>Mailing Address:</strong>
+                  <div>527 Dundonald St, Suite 247</div>
+                  <div>Fredericton, NB, E3B 1X5</div>
+                </div>
+              </div>
+
+              <div class="footer-contact-item" style="color: var(--color-text-main); margin-bottom: 1.25rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 22px; height: 22px; color: var(--color-sar-orange);"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <div>
+                  <strong>Phone / Voicemail:</strong>
+                  <div><a href="tel:5064615832" style="color: var(--color-navy-dark); font-weight: 700;">(506) 461-5832</a></div>
+                  <div style="font-size: 0.82rem; color: var(--color-text-muted);">Please leave a voicemail and a volunteer will return your call.</div>
+                </div>
+              </div>
+
+              <div class="footer-contact-item" style="color: var(--color-text-main); margin-bottom: 1.25rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 22px; height: 22px; color: var(--color-sar-orange);"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <div>
+                  <strong>Email Directory:</strong>
+                  <div>General: <a href="mailto:info@yssr.ca">info@yssr.ca</a></div>
+                  <div>Membership: <a href="mailto:membership@yssr.ca">membership@yssr.ca</a></div>
+                  <div>Donations: <a href="mailto:treasurer@yssr.ca">treasurer@yssr.ca</a></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Team Meetings Box -->
+            <div class="content-card" style="margin-bottom: 0;">
+              <h4>Meeting Schedule</h4>
+              <p style="font-size:0.92rem; color:var(--color-text-muted); margin-bottom:0.5rem;">
+                <strong>General Meetings:</strong> 1st Wednesday of every month at 7:00 PM.
+              </p>
+              <p style="font-size:0.92rem; color:var(--color-text-muted); margin-bottom:0;">
+                <strong>Executive Meetings:</strong> 3rd Wednesday of every month.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div style="display:flex; align-items:center; gap: 12px; margin-bottom: 1rem;">
+            <img src="assets/images/logo.png" alt="YSSR" style="width: 46px; height: 46px; object-fit: contain;">
+            <h4 style="margin: 0; padding: 0;">York Sunbury Search & Rescue</h4>
+          </div>
+          <p class="footer-brand-bio">
+            York Sunbury Search and Rescue is a 100% volunteer-operated registered charity dedicated to locating and recovering lost and missing persons 24 hours a day, 365 days a year.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="services.html">What We Do</a></li>
+            <li><a href="project-lifesaver.html">Project Lifesaver</a></li>
+            <li><a href="join.html">Join Our Team</a></li>
+            <li><a href="news.html">News &amp; Events</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Member Links</h4>
+          <ul>
+            <li><a href="https://yorksunbury.team-manager.ca.d4h.com/dashboard" target="_blank" rel="noopener">D4H Team Manager</a></li>
+            <li><a href="https://outlook.office.com/" target="_blank" rel="noopener">Office 365 Email</a></li>
+            <li><a href="admin.html">Website Content Manager</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; Location</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>527 Dundonald St, Suite 247<br>Fredericton, NB, E3B 1X5</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>(506) 461-5832</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@yssr.ca</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 York Sunbury Search &amp; Rescue Inc. All rights reserved.</div>
+        <div>Registered Charity in New Brunswick, Canada.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data-loader.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "faq-1",
+    "category": "recruitment",
+    "question": "Do I have to wait until the next New Member Night recruitment event to join?",
+    "answer": "Yes, if you would like to be an operational searcher who gets deployed in the woods and on missing person tasks. Searcher training is scheduled in cohorts twice a year. However, if you are interested in volunteering in a non-operational role (such as IT, PR, fundraising, administration, or logistics), you can join at any time throughout the year!"
+  },
+  {
+    "id": "faq-2",
+    "category": "recruitment",
+    "question": "Can I volunteer, but not search in the woods?",
+    "answer": "Absolutely! A significant part of our team's success depends on non-operational volunteers. You can support YSSR through fundraising, vehicle & equipment maintenance, community events, IT & website management, administration, and training logistics."
+  },
+  {
+    "id": "faq-3",
+    "category": "membership",
+    "question": "How much does it cost to join?",
+    "answer": "New member dues are $40 for your first year, which includes an official YSSR uniform shirt. Annual membership dues in subsequent years are $20."
+  },
+  {
+    "id": "faq-4",
+    "category": "operations",
+    "question": "How fit do I need to be?",
+    "answer": "Operational functions of ground search and rescue can be physically demanding. Searchers may be required to traverse dense brush, steep ravines, wetlands, or night conditions carrying a field pack for several hours at a time. Self-awareness of your physical health and endurance is important."
+  },
+  {
+    "id": "faq-5",
+    "category": "operations",
+    "question": "What kind of time commitment is required?",
+    "answer": "We ask operational members to contribute at least 50 hours per year (with at least 25 hours in operations or training). This includes our monthly general meeting (first Wednesday of every month), scheduled evening or weekend training exercises, fundraising events, and search callouts as your availability permits."
+  },
+  {
+    "id": "faq-6",
+    "category": "operations",
+    "question": "What if I can't make a search callout?",
+    "answer": "Search callouts are emergency activations. We understand people have jobs, family commitments, and life events, so you are never penalized if you cannot respond to a specific call. We simply ask that you maintain your training currency and attend whenever you are able."
+  },
+  {
+    "id": "faq-7",
+    "category": "operations",
+    "question": "Is training mandatory?",
+    "answer": "Yes, Basic Searcher Training (approx. 15 hours over a weekend) is required before deploying on an operational search. Additionally, operational members must maintain valid Standard First Aid & CPR certification within 6 months of joining."
+  },
+  {
+    "id": "faq-8",
+    "category": "operations",
+    "question": "How far does YSSR travel for searches?",
+    "answer": "Our primary tasking area is Fredericton and the York and Sunbury counties. However, as 1 of 9 Ground Search and Rescue teams in New Brunswick, we regularly assist mutual-aid sister teams across NB, and have deployed to assist in Nova Scotia, PEI, and Maine."
+  },
+  {
+    "id": "faq-9",
+    "category": "operations",
+    "question": "Do I need to buy a lot of expensive equipment?",
+    "answer": "No. You provide your own weather-appropriate outdoor clothing and sturdy hiking boots. YSSR supplies compasses, two-way VHF radios, GPS units, tracking sticks, and specialized team gear. We provide a recommended packing checklist so you can build your personal pack gradually."
+  },
+  {
+    "id": "faq-10",
+    "category": "operations",
+    "question": "Are volunteers insured for injury?",
+    "answer": "Yes. Active volunteers have coverage through the Province of New Brunswick while participating in authorized operations and official training events."
+  },
+  {
+    "id": "faq-11",
+    "category": "emergency",
+    "question": "How do I report someone missing?",
+    "answer": "Immediately call 911 or your local police force (Fredericton Police Force or RCMP). There is NO waiting period required to report a missing person in Canada. The police will investigate and officially activate York Sunbury Search and Rescue."
+  },
+  {
+    "id": "faq-12",
+    "category": "donations",
+    "question": "Will I receive a charitable tax receipt for donations?",
+    "answer": "Yes. York Sunbury Search and Rescue is a registered Canadian charity. When you donate online through CanadaHelps, an official tax receipt is generated instantly for your income tax return."
+  }
+]
