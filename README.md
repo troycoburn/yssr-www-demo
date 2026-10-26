@@ -38,9 +38,10 @@ Built with **pure semantic HTML5, modern CSS3, and vanilla JavaScript**. It requ
      - `data/news.json`: Articles, field exercises, and announcements.
      - `data/team.json`: Executive board and committee chairs.
      - `data/faq.json`: Frequently asked questions and categories.
+     - `data/wishlist.json`: Equipment wishlist items and estimated costs for donors.
      - `data/stats.json`: Annual metrics and response statistics.
      - `data/site-config.json`: Organization address, emergency message, phone numbers, and recruitment banner.
-   - The included [admin.html](admin.html) provides an in-browser graphical editor where non-technical volunteers can type new announcements, edit team members, or update FAQs, and download or copy the resulting JSON with one click.
+   - The included [admin.html](admin.html) provides an in-browser graphical editor where non-technical volunteers can type new announcements, edit team members, update FAQs, or manage equipment wishlist items, and download or copy the resulting JSON with one click.
 
 ---
 

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "hypothermia-rescue-wraps",
+    "title": "Hypothermia Rescue Wraps",
+    "description": "Multi-layer patient thermal insulation blankets and active chemical warming pods that prevent hypothermia during prolonged evacuations.",
+    "cost": "Approx. $250 per kit"
+  },
+  {
+    "id": "project-lifesaver-transmitters",
+    "title": "Project Lifesaver Transmitters",
+    "description": "Waterproof tracking bracelets and testing kits provided to low-income families of children with autism and seniors with dementia.",
+    "cost": "Approx. $350 per client package"
+  },
+  {
+    "id": "high-power-scene-floodlights",
+    "title": "High-Power Scene Floodlights",
+    "description": "Portable battery-powered LED scene lighting for establishing landing zones and command posts during dark night operations.",
+    "cost": "Approx. $600 per light"
+  }
+]

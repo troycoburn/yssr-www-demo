@@ -51,7 +51,7 @@
           <div>
             <h2 style="margin-bottom: 0.25rem;">Visual Website Content Editor</h2>
             <p style="color: var(--color-text-muted); margin-bottom: 0;">
-              Easily add news dispatches, modify team leadership, or update FAQs. When you're done, copy or download the file and commit it to GitHub.
+              Easily add news dispatches, modify team leadership, update FAQs, or manage the equipment wishlist. When you're done, copy or download the file and commit it to GitHub.
             </p>
           </div>
           <div>
@@ -64,6 +64,7 @@
           <button type="button" class="active" data-tab="news">News &amp; Articles</button>
           <button type="button" data-tab="team">Team Leadership</button>
           <button type="button" data-tab="faq">FAQs</button>
+          <button type="button" data-tab="wishlist">Equipment Wishlist</button>
           <button type="button" data-tab="guide">Publishing Instructions</button>
         </div>
 
@@ -247,7 +248,57 @@
           </div>
         </div>
 
-        <!-- TAB 4: PUBLISHING GUIDE -->
+        <!-- TAB 4: WISHLIST -->
+        <div id="tab-wishlist" class="admin-tab-pane" style="display:none;">
+          <div class="admin-header-actions">
+            <div>
+              <h3 style="margin-bottom: 0;">Equipment Wishlist Items</h3>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 0;">Updates the equipment wishlist on the Donate &amp; Support page.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button type="button" class="btn btn-primary btn-sm" onclick="YSSRAdmin.exportData('wishlist')">Download wishlist.json</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="YSSRAdmin.copyToClipboard('wishlist')">Copy to Clipboard</button>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+            <!-- Form -->
+            <div style="background: var(--color-bg-light); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.5rem;">
+              <h4 id="wishlistFormHeading" style="margin-bottom: 1rem;">Add Wishlist Item</h4>
+              <form id="wishlistEditForm">
+                <div class="form-group">
+                  <label for="wishlistTitle" class="form-label">Item Name</label>
+                  <input type="text" id="wishlistTitle" class="form-control" required placeholder="e.g. VHF Radios & GPS Units">
+                </div>
+
+                <div class="form-group">
+                  <label for="wishlistCost" class="form-label">Approximate Cost / Sponsoring Amount</label>
+                  <input type="text" id="wishlistCost" class="form-control" required placeholder="e.g. Approx. $450 – $800 each">
+                </div>
+
+                <div class="form-group">
+                  <label for="wishlistDescription" class="form-label">Description &amp; Operational Need</label>
+                  <textarea id="wishlistDescription" class="form-control" style="min-height: 100px;" required placeholder="Explain why this equipment is needed for search operations..."></textarea>
+                </div>
+
+                <div style="display:flex; gap:0.5rem;">
+                  <button type="submit" class="btn btn-primary" style="flex-grow:1;">Save to Wishlist</button>
+                  <button type="button" class="btn btn-secondary" onclick="YSSRAdmin.resetWishlistForm()">Reset</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- List -->
+            <div>
+              <h4 style="margin-bottom: 1rem;">Current Wishlist Items</h4>
+              <div id="adminWishlistList" style="border: 1px solid var(--color-border); border-radius: var(--radius-md); max-height: 520px; overflow-y: auto;">
+                <!-- Dynamic list -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 5: PUBLISHING GUIDE -->
         <div id="tab-guide" class="admin-tab-pane" style="display:none;" id="how-to-publish">
           <h3>How to Publish Changes (1-Minute Guide for Non-Technical Members)</h3>
           <p class="lead">
@@ -265,7 +316,7 @@
                   Navigate to your GitHub repository in your web browser (e.g. <code>github.com/yorksunburysar/website</code>).
                 </li>
                 <li style="margin-bottom: 0.75rem;">
-                  Click on the <code>data/</code> folder, then select the file (<code>news.json</code>, <code>team.json</code>, or <code>faq.json</code>).
+                  Click on the <code>data/</code> folder, then select the file (<code>news.json</code>, <code>team.json</code>, <code>faq.json</code>, or <code>wishlist.json</code>).
                 </li>
                 <li style="margin-bottom: 0.75rem;">
                   Click the <strong>Pencil icon (Edit this file)</strong> in the top right.

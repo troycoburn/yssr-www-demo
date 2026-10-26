@@ -137,4 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Static FAQ Accordions (for pages with static FAQs such as project-lifesaver.html)
+  const staticAccordions = document.querySelectorAll('.faq-accordion:not([data-faq-container])');
+  if (staticAccordions.length > 0 && typeof initAccordion === 'function') {
+    staticAccordions.forEach(accordion => initAccordion(accordion));
+  }
 });

@@ -10,6 +10,7 @@ const YSSRData = {
   team: null,
   faq: null,
   stats: null,
+  wishlist: null,
 
   async fetchJSON(endpoint) {
     try {
@@ -130,6 +131,32 @@ const YSSRData = {
         category: "donations",
         answer: "Yes. York Sunbury Search and Rescue is a registered Canadian charity. When you donate online through CanadaHelps, an official tax receipt is generated instantly for your income tax return."
       }
+    ],
+    wishlist: [
+      {
+        id: "vhf-radios-gps",
+        title: "VHF Radios & GPS Units",
+        description: "Rugged handheld radios and satellite GPS receivers ensure search teams remain connected with Incident Command in deep river valleys.",
+        cost: "Approx. $450 – $800 each"
+      },
+      {
+        id: "hypothermia-rescue-wraps",
+        title: "Hypothermia Rescue Wraps",
+        description: "Multi-layer patient thermal insulation blankets and active chemical warming pods that prevent hypothermia during prolonged evacuations.",
+        cost: "Approx. $250 per kit"
+      },
+      {
+        id: "project-lifesaver-transmitters",
+        title: "Project Lifesaver Transmitters",
+        description: "Waterproof tracking bracelets and testing kits provided to low-income families of children with autism and seniors with dementia.",
+        cost: "Approx. $350 per client package"
+      },
+      {
+        id: "high-power-scene-floodlights",
+        title: "High-Power Scene Floodlights",
+        description: "Portable battery-powered LED scene lighting for establishing landing zones and command posts during dark night operations.",
+        cost: "Approx. $600 per light"
+      }
     ]
   },
 
@@ -155,6 +182,14 @@ const YSSRData = {
       this.faq = data || this.defaults.faq;
     }
     return this.faq;
+  },
+
+  async loadWishlist() {
+    if (!this.wishlist) {
+      const data = await this.fetchJSON('data/wishlist.json');
+      this.wishlist = data || this.defaults.wishlist;
+    }
+    return this.wishlist;
   },
 
   // Render news cards on home page or news page
@@ -258,6 +293,25 @@ const YSSRData = {
     initAccordion(containerEl);
   },
 
+  // Render Equipment Wishlist
+  renderWishlist(containerEl, items) {
+    if (!containerEl) return;
+    if (!items || items.length === 0) {
+      containerEl.innerHTML = '<p class="text-muted">No wishlist items listed at this time.</p>';
+      return;
+    }
+
+    containerEl.innerHTML = items.map(item => `
+      <div class="pillar-card">
+        <h4>${escapeHTML(item.title)}</h4>
+        <p style="color:var(--color-text-muted); font-size:0.92rem;">
+          ${escapeHTML(item.description)}
+        </p>
+        <div style="font-weight: 800; color: var(--color-sar-orange); margin-top: auto;">${escapeHTML(item.cost)}</div>
+      </div>
+    `).join('');
+  },
+
   // Read full article in modal
   async openNewsModal(newsId) {
     const news = await this.loadNews();
@@ -338,14 +392,17 @@ function getInitials(name) {
 }
 
 function initAccordion(container) {
+  if (!container) return;
   const items = container.querySelectorAll('.faq-item');
   items.forEach(item => {
     const btn = item.querySelector('.faq-question');
+    if (!btn) return;
     btn.onclick = () => {
       const isOpen = item.classList.contains('open');
       items.forEach(i => {
         i.classList.remove('open');
-        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        const q = i.querySelector('.faq-question');
+        if (q) q.setAttribute('aria-expanded', 'false');
       });
       if (!isOpen) {
         item.classList.add('open');
@@ -354,6 +411,8 @@ function initAccordion(container) {
     };
   });
 }
+
+YSSRData.initAccordion = initAccordion;
 
 // Auto-initialize components on page load
 document.addEventListener('DOMContentLoaded', async () => {
@@ -378,4 +437,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const faqs = await YSSRData.loadFAQ();
     YSSRData.renderFAQ(faqContainer, faqs);
   }
+
+  // Wishlist container
+  const wishlistContainer = document.querySelector('[data-wishlist-container]');
+  if (wishlistContainer) {
+    const wishlistItems = await YSSRData.loadWishlist();
+    YSSRData.renderWishlist(wishlistContainer, wishlistItems);
+  }
+
+  // Static FAQ accordions (e.g. project-lifesaver.html)
+  document.querySelectorAll('.faq-accordion:not([data-faq-container])').forEach(accordion => {
+    initAccordion(accordion);
+  });
 });

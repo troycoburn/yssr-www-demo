@@ -9,11 +9,13 @@ const YSSRAdmin = {
   activeNewsIndex: -1,
   activeTeamIndex: -1,
   activeFaqIndex: -1,
+  activeWishlistIndex: -1,
 
   data: {
     news: [],
     team: { executive: [], committees: [] },
     faq: [],
+    wishlist: [],
     config: {}
   },
 
@@ -22,10 +24,12 @@ const YSSRAdmin = {
     this.data.news = (await YSSRData.loadNews()) || [];
     this.data.team = (await YSSRData.loadTeam()) || { executive: [], committees: [] };
     this.data.faq = (await YSSRData.loadFAQ()) || [];
+    this.data.wishlist = (await YSSRData.loadWishlist()) || [];
 
     this.renderNewsList();
     this.renderTeamList();
     this.renderFaqList();
+    this.renderWishlistList();
     this.setupEvents();
   },
 
@@ -66,6 +70,15 @@ const YSSRAdmin = {
       faqForm.addEventListener('submit', (e) => {
         e.preventDefault();
         this.saveFaqItem();
+      });
+    }
+
+    // Wishlist Form
+    const wishlistForm = document.getElementById('wishlistEditForm');
+    if (wishlistForm) {
+      wishlistForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.saveWishlistItem();
       });
     }
   },
@@ -241,6 +254,76 @@ const YSSRAdmin = {
     }
   },
 
+  /* ================== WISHLIST MANAGEMENT ================== */
+  renderWishlistList() {
+    const listEl = document.getElementById('adminWishlistList');
+    if (!listEl) return;
+
+    listEl.innerHTML = this.data.wishlist.map((item, idx) => `
+      <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); background: ${this.activeWishlistIndex === idx ? 'var(--color-sar-orange-light)' : '#ffffff'};">
+        <div>
+          <strong>${escapeHTML(item.title)}</strong>
+          <div style="font-size:0.8rem; color:var(--color-sar-orange); font-weight:700;">${escapeHTML(item.cost)}</div>
+          <div style="font-size:0.82rem; color:var(--color-text-muted);">${escapeHTML(item.description ? item.description.substring(0, 80) + '...' : '')}</div>
+        </div>
+        <div style="display:flex; gap:0.5rem; flex-shrink:0; margin-left:1rem;">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="YSSRAdmin.editWishlist(${idx})">Edit</button>
+          <button type="button" class="btn btn-secondary btn-sm" style="color:var(--color-danger-red);" onclick="YSSRAdmin.deleteWishlistItem(${idx})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+  },
+
+  editWishlist(idx) {
+    this.activeWishlistIndex = idx;
+    const item = this.data.wishlist[idx];
+    document.getElementById('wishlistTitle').value = item.title;
+    document.getElementById('wishlistCost').value = item.cost;
+    document.getElementById('wishlistDescription').value = item.description;
+    document.getElementById('wishlistFormHeading').innerText = 'Edit Wishlist Item';
+    this.renderWishlistList();
+  },
+
+  resetWishlistForm() {
+    this.activeWishlistIndex = -1;
+    document.getElementById('wishlistEditForm').reset();
+    document.getElementById('wishlistFormHeading').innerText = 'Add Wishlist Item';
+    this.renderWishlistList();
+  },
+
+  saveWishlistItem() {
+    const title = document.getElementById('wishlistTitle').value.trim();
+    const cost = document.getElementById('wishlistCost').value.trim();
+    const description = document.getElementById('wishlistDescription').value.trim();
+
+    const existing = this.activeWishlistIndex >= 0 ? this.data.wishlist[this.activeWishlistIndex] : null;
+
+    const itemObj = {
+      id: existing && existing.id ? existing.id : title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+      title,
+      cost,
+      description
+    };
+
+    if (this.activeWishlistIndex >= 0) {
+      this.data.wishlist[this.activeWishlistIndex] = itemObj;
+    } else {
+      this.data.wishlist.push(itemObj);
+    }
+
+    this.renderWishlistList();
+    this.resetWishlistForm();
+    this.showStatus('Wishlist item saved in local editor session!');
+  },
+
+  deleteWishlistItem(idx) {
+    if (confirm(`Are you sure you want to delete "${this.data.wishlist[idx].title}" from the wishlist?`)) {
+      this.data.wishlist.splice(idx, 1);
+      this.renderWishlistList();
+      this.resetWishlistForm();
+    }
+  },
+
   /* ================== EXPORT / DOWNLOAD / CLIPBOARD ================== */
   exportData(type) {
     let payload;
@@ -255,6 +338,9 @@ const YSSRAdmin = {
     } else if (type === 'faq') {
       payload = JSON.stringify(this.data.faq, null, 2);
       filename = 'faq.json';
+    } else if (type === 'wishlist') {
+      payload = JSON.stringify(this.data.wishlist, null, 2);
+      filename = 'wishlist.json';
     }
 
     // Trigger download
@@ -276,6 +362,7 @@ const YSSRAdmin = {
     if (type === 'news') payload = JSON.stringify(this.data.news, null, 2);
     else if (type === 'team') payload = JSON.stringify(this.data.team, null, 2);
     else if (type === 'faq') payload = JSON.stringify(this.data.faq, null, 2);
+    else if (type === 'wishlist') payload = JSON.stringify(this.data.wishlist, null, 2);
 
     navigator.clipboard.writeText(payload).then(() => {
       this.showStatus(`Copied updated <strong>${type}.json</strong> data to clipboard! Paste it directly into GitHub.`);
