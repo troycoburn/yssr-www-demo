@@ -1344,14 +1344,14 @@ textarea.form-control {
   margin: var(--space-lg) 0;
 }
 
-.steps-list li {
+.steps-list > li {
   counter-increment: step-counter;
   position: relative;
   padding-left: 54px;
   margin-bottom: var(--space-lg);
 }
 
-.steps-list li::before {
+.steps-list > li::before {
   content: counter(step-counter);
   position: absolute;
   left: 0;
@@ -1368,14 +1368,22 @@ textarea.form-control {
   justify-content: center;
 }
 
-.steps-list li h4 {
+.steps-list > li > h4 {
   margin-bottom: 4px;
   font-size: 1.15rem;
 }
 
-.steps-list li p {
+.steps-list > li > p {
   color: var(--color-text-muted);
   margin-bottom: 0;
+}
+
+.steps-list ul {
+  list-style: disc;
+}
+
+.steps-list ol {
+  list-style: decimal;
 }
 
 /* Filter Bar (News, FAQs) */
