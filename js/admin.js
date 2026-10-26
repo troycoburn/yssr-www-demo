@@ -79,7 +79,7 @@ const YSSRAdmin = {
       <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); background: ${this.activeNewsIndex === idx ? 'var(--color-sar-orange-light)' : '#ffffff'};">
         <div>
           <strong>${escapeHTML(item.title)}</strong>
-          <div style="font-size:0.8rem; color:var(--color-text-muted);">${item.date} • ${item.category}</div>
+          <div style="font-size:0.8rem; color:var(--color-text-muted);">${item.date} • ${item.category}${item.link ? ' • 🔗 Linked' : ''}</div>
         </div>
         <div style="display:flex; gap:0.5rem;">
           <button type="button" class="btn btn-secondary btn-sm" onclick="YSSRAdmin.editNews(${idx})">Edit</button>
@@ -97,6 +97,8 @@ const YSSRAdmin = {
     document.getElementById('newsCategory').value = item.category;
     document.getElementById('newsSummary').value = item.summary;
     document.getElementById('newsContent').value = item.content || item.summary;
+    const linkEl = document.getElementById('newsLink');
+    if (linkEl) linkEl.value = item.link || '';
     document.getElementById('newsFormHeading').innerText = 'Edit Article';
     this.renderNewsList();
   },
@@ -105,6 +107,8 @@ const YSSRAdmin = {
     this.activeNewsIndex = -1;
     document.getElementById('newsEditForm').reset();
     document.getElementById('newsDate').value = new Date().toISOString().split('T')[0];
+    const linkEl = document.getElementById('newsLink');
+    if (linkEl) linkEl.value = '';
     document.getElementById('newsFormHeading').innerText = 'Add New Article';
     this.renderNewsList();
   },
@@ -115,17 +119,22 @@ const YSSRAdmin = {
     const category = document.getElementById('newsCategory').value;
     const summary = document.getElementById('newsSummary').value.trim();
     const content = document.getElementById('newsContent').value.trim();
+    const linkEl = document.getElementById('newsLink');
+    const link = linkEl ? linkEl.value.trim() : '';
+
+    const existing = this.activeNewsIndex >= 0 ? this.data.news[this.activeNewsIndex] : null;
 
     const postObj = {
-      id: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+      id: existing ? existing.id : title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
       title,
       date,
       category,
-      author: "York Sunbury Search & Rescue",
-      featured: false,
+      author: existing ? (existing.author || "York Sunbury Search & Rescue") : "York Sunbury Search & Rescue",
+      featured: existing ? !!existing.featured : false,
       summary,
       content,
-      tag: category
+      tag: category,
+      ...(link ? { link } : {})
     };
 
     if (this.activeNewsIndex >= 0) {

@@ -176,8 +176,19 @@ const YSSRData = {
         <div class="news-card-body">
           <h3 class="news-card-title">${escapeHTML(item.title)}</h3>
           <p class="news-card-excerpt">${escapeHTML(item.summary || item.content.substring(0, 140) + '...')}</p>
-          <div style="margin-top:auto; padding-top: 1rem;">
+          <div style="margin-top:auto; padding-top: 1rem; display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
             <button type="button" class="btn btn-secondary btn-sm" onclick="YSSRData.openNewsModal('${item.id}')">Read Full Story</button>
+            ${item.link ? `
+              <a href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-navy btn-sm" style="display:inline-flex; align-items:center; gap:0.35rem;" title="${item.link.includes('facebook.com') || item.link.includes('fb.watch') || item.link.includes('fb.com') ? 'View on Facebook' : 'Original Post'}">
+                ${item.link.includes('facebook.com') || item.link.includes('fb.watch') || item.link.includes('fb.com') ? `
+                  <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px; height:14px;"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95C18.05 21.45 22 17.19 22 12z"/></svg>
+                  Facebook
+                ` : `
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px; height:14px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  Post
+                `}
+              </a>
+            ` : ''}
           </div>
         </div>
       </article>
@@ -279,8 +290,21 @@ const YSSRData = {
       <h2 style="margin-bottom: 0.75rem;">${escapeHTML(article.title)}</h2>
       <p style="font-weight:600; color:var(--color-sar-orange); margin-bottom: 1.25rem;">Author: ${escapeHTML(article.author || 'YSSR')}</p>
       <div style="font-size: 1.05rem; line-height: 1.75; color: var(--color-text-main);">
-        <p>${escapeHTML(article.content || article.summary)}</p>
+        <p style="white-space: pre-line;">${escapeHTML(article.content || article.summary)}</p>
       </div>
+      ${article.link ? `
+        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+          <a href="${escapeHTML(article.link)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="display:inline-flex; align-items:center; gap:0.5rem;">
+            ${article.link.includes('facebook.com') || article.link.includes('fb.watch') || article.link.includes('fb.com') ? `
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px; height:16px;"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95C18.05 21.45 22 17.19 22 12z"/></svg>
+              View on Facebook
+            ` : `
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              View Original Post
+            `}
+          </a>
+        </div>
+      ` : ''}
     `;
 
     modalOverlay.classList.add('active');
