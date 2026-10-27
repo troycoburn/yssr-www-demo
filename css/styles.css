@@ -1594,3 +1594,10 @@ textarea.form-control {
     font-size: 1.05rem;
   }
 }
+
+iframe {
+  width: 50vw;
+  height: 400px;
+  border-radius: 12px;       /* Rounds the corners */
+  box-shadow: 5px 5px 5px #ff7600;
+}
